@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/shared/validators/must-match.validator';
 
-import { validateAllFormFields, showError } from '../../shared/utils/form';
+import { validateAllFormFields } from '../../shared/utils/form';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,6 @@ import { validateAllFormFields, showError } from '../../shared/utils/form';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  showError = showError;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -25,6 +24,17 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ['', Validators.required],
       },
       { validator: MustMatch('password', 'confirmPassword') }
+    );
+  }
+
+  showError(control: string): boolean {
+    if (!this.registerForm.get(control)) {
+      return false;
+    }
+
+    return (
+      this.registerForm.get(control).invalid &&
+      this.registerForm.get(control).touched
     );
   }
 

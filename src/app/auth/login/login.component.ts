@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { validateAllFormFields } from 'src/app/shared/utils/form';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -28,16 +29,11 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  validateAllFormFields() {
-    Object.keys(this.loginForm.controls).forEach((field) => {
-      const control = this.loginForm.get(field);
-      control.markAsTouched();
-    });
-  }
-
   onSubmit() {
     if (this.loginForm.invalid) {
-      this.validateAllFormFields();
+      validateAllFormFields(this.loginForm);
+      console.log('invalid');
+
       return;
     }
     alert(

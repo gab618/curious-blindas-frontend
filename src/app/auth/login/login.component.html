@@ -1,8 +1,18 @@
 <div class="form-container">
   <h3 class="form-container__title">Insira seus dados para entrar</h3>
   <form class="form-container__form" [formGroup]="loginForm">
-    <input type="text" placeholder="Login" formControlName="username" />
-    <input type="password" placeholder="Senha" formControlName="password" />
+    <input
+      type="text"
+      placeholder="Login"
+      formControlName="username"
+      [class.form-container__input--invalid]="showError('username')"
+    />
+    <input
+      type="password"
+      placeholder="Senha"
+      formControlName="password"
+      [class.form-container__input--invalid]="showError('password')"
+    />
     <button class="form-container__btn-submit" (click)="onSubmit()">
       Entrar
     </button>

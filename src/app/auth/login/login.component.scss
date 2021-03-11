@@ -45,4 +45,12 @@
     color: rgb(28, 28, 28);
     margin-top: 13px;
   }
+
+  .form-container__input--invalid {
+    border: 1px solid red;
+
+    &::placeholder {
+      color: red;
+    }
+  }
 }
