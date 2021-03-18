@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { UserService } from 'src/app/shared/services/user.service';
 import { MustMatch } from 'src/app/shared/validators/must-match.validator';
 
 import { validateAllFormFields } from '../../shared/utils/form';
@@ -11,8 +13,12 @@ import { validateAllFormFields } from '../../shared/utils/form';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  loading = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -45,6 +51,25 @@ export class RegisterComponent implements OnInit {
 
       return;
     }
-    //implementar o register
+    this.register();
+  }
+
+  register() {
+    this.loading = true;
+    this.userService
+      .register(this.registerForm.value)
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe(
+        (response) => this.onSuccess(response),
+        (error) => this.onError(error)
+      );
+  }
+
+  onSuccess(response) {
+    console.log(response);
+  }
+
+  onError(error) {
+    console.log(error);
   }
 }
