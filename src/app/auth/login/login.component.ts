@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { validateAllFormFields } from 'src/app/shared/utils/form';
 import { finalize } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +63,6 @@ export class LoginComponent implements OnInit {
   }
 
   onError(error) {
-    console.log(error);
+    this.toastr.error(error.error.error, 'Deu ruim 😬');
   }
 }

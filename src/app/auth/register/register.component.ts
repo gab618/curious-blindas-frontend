@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MustMatch } from 'src/app/shared/validators/must-match.validator';
@@ -17,7 +19,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -66,10 +70,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSuccess(response) {
-    console.log(response);
+    this.toastr.success(
+      `Seja bem vindo, ${this.registerForm.value.name}`,
+      'Usuário criado ✅'
+    );
+    this.router.navigate(['login']);
   }
 
   onError(error) {
-    console.log(error);
+    this.toastr.error(error.error.error, 'Deu ruim 😬');
   }
 }
