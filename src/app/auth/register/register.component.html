@@ -43,8 +43,14 @@
       />
     </div>
 
-    <button class="form-container__btn-submit" (click)="onSubmit()">
-      Criar conta
+    <button
+      class="form-container__btn-submit"
+      (click)="onSubmit()"
+      [class.form-container__btn-submit--loading]="loading"
+      [disabled]="loading"
+    >
+      <div [hidden]="loading">Criar conta</div>
+      <app-spinner [hidden]="!loading"></app-spinner>
     </button>
   </form>
   <a class="form-container__forgot" routerLink="/login"

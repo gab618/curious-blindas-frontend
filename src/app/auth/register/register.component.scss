@@ -61,6 +61,14 @@
     background: #de7c01;
     border-radius: 10px;
     color: #fff;
+
+    cursor: pointer;
+    transition: background 300ms;
+
+    &--loading {
+      background: lighten(#de7c01, 25%);
+      cursor: not-allowed;
+    }
   }
 
   &__forgot {

@@ -13,8 +13,14 @@
       formControlName="password"
       [class.form-container__input--invalid]="showError('password')"
     />
-    <button class="form-container__btn-submit" (click)="onSubmit()">
-      Entrar
+    <button
+      class="form-container__btn-submit"
+      (click)="onSubmit()"
+      [class.form-container__btn-submit--loading]="loading"
+      [disabled]="loading"
+    >
+      <div [hidden]="loading">Entrar</div>
+      <app-spinner [hidden]="!loading"></app-spinner>
     </button>
   </form>
   <a class="form-container__forgot" routerLink="/register"
