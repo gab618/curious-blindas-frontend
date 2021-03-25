@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { InboxRoutingModule } from './inbox-routing.module';
 import { InboxComponent } from './inbox.component';
+import { InboxHeaderComponent } from './inbox-header/inbox-header.component';
+import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
-  declarations: [InboxComponent],
+  declarations: [InboxComponent, InboxHeaderComponent, QuestionComponent],
   imports: [
     CommonModule,
     InboxRoutingModule

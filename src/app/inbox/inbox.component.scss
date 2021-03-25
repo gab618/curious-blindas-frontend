@@ -5,46 +5,8 @@
   min-height: 100vh;
 }
 
-.header-container {
+.questions-container {
   display: flex;
-  justify-content: center;
-  height: 66px;
-  background: #fff;
-}
-
-.header {
-  width: 890px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  &__left {
-    display: flex;
-    align-items: center;
-  }
-
-  &__right {
-    display: flex;
-    svg {
-      height: 24px;
-      width: 24px;
-    }
-  }
-
-  &__button {
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__logo {
-    height: 100%;
-  }
-
-  &__title {
-    margin-left: 20px;
-    font-size: 20px;
-    font-weight: 400;
-  }
+  flex-direction: column;
+  align-items: center;
 }

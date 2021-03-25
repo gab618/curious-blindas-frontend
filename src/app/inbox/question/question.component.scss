@@ -1,0 +1,62 @@
+.question {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 890px;
+  background: #fff;
+  padding: 10px;
+}
+
+.user {
+  display: flex;
+
+  &__avatar {
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+    border: 4px solid #c4c4c4;
+    background: #de7c01;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &__info {
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__username {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__date {
+    color: #bebebe;
+    font-size: 14px;
+  }
+}
+
+.answer {
+  padding: 16px 0px;
+  color: rgb(28, 28, 28);
+  font-size: 16px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.buttons {
+  display: flex;
+  padding: 10px;
+
+  &__reply {
+    width: 168px;
+    height: 36px;
+    background: #f1f1f1;
+    color: rgb(28, 28, 28);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+}
