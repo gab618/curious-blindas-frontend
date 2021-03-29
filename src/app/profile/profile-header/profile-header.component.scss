@@ -16,6 +16,7 @@
   height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &__left {
     display: flex;
@@ -51,5 +52,25 @@
     margin-left: 20px;
     font-size: 20px;
     font-weight: 400;
+  }
+
+  &__button {
+    min-width: 105px;
+    border-radius: 15px;
+    background: rgb(222, 124, 0);
+    color: #fff;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    &--secondary {
+      background-color: rgba(0, 0, 0, 0);
+      border: 1px solid rgb(28, 28, 28);
+      color: rgb(28, 28, 28);
+    }
   }
 }

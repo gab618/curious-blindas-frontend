@@ -43,5 +43,13 @@
   </header>
 
   <!-- Login Header -->
-  <header class="header" *ngIf="!isAuthenticated"></header>
+  <header class="header" *ngIf="!isAuthenticated">
+    <button class="header__button header__button--secondary">Login</button>
+    <img
+      src="../../assets/logo2.svg"
+      alt="Curious Blindas"
+      class="header__logo"
+    />
+    <button class="header__button">Register</button>
+  </header>
 </div>
